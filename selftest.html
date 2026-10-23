@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8" /><title>OCR 自检（开发用）</title></head>
+<body><pre id="out">running</pre><script type="module">
+// 开发用：pnpm exec vite 后打开 /selftest.html，用 samples/ 里的示例截图跑一遍识别，并演示手机号打码
+import { recognize } from '/src/tool/ocr.ts';
+import { maskPhones } from '/src/tool/core.ts';
+const res = [];
+for (const name of ['示例-高意向-办公室净化器.png', '示例-犹豫-复印机.png', '示例-损坏文件.png']) {
+  const resp = await fetch('/samples/' + encodeURIComponent(name));
+  const t0 = performance.now();
+  try {
+    const r = await recognize(new Uint8Array(await resp.arrayBuffer()), { useCls: false, minScore: 0.5 });
+    const text = r.lines.map((l) => l.text).join('\n');
+    res.push(`== ${name}：${r.lines.length} 行，${Math.round(performance.now() - t0)}ms\n${text}\n-- 打码后：\n${maskPhones(text)}`);
+  } catch (e) { res.push(`== ${name}：${e.message}`); }
+}
+document.getElementById('out').textContent = res.join('\n\n');
+</script></body></html>
