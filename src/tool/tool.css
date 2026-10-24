@@ -1,0 +1,69 @@
+/* 聊天截图转客户档案：布局 f（顶部标签 + 卡片网格），结果是一面客户名片墙；只用 kit.css 变量，适配亮暗色 */
+.L-f .k-cards { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; align-items: start; }
+.L-f .k-card-body { padding: 0; }
+.L-f .k-card-meta { padding: 8px 14px 10px; border-top: 1px solid var(--line); }
+
+.cc-empty { display: grid; justify-items: center; gap: 14px; padding: 20px; max-width: 580px; margin: auto; text-align: center; font-size: 14px; }
+.cc-empty > svg { width: 100%; max-width: 500px; height: auto; }
+.cc-ph { fill: #EDEDED; stroke: var(--line-strong); stroke-width: 1.5; }
+html[data-mode="dark"] .cc-ph { fill: #262626; }
+.cc-b-l { fill: #fff; stroke: var(--line); }
+html[data-mode="dark"] .cc-b-l { fill: #3A3A3A; stroke: none; }
+.cc-b-r { fill: #95EC69; }
+html[data-mode="dark"] .cc-b-r { fill: #2F7A3E; }
+.cc-arrow { fill: none; stroke: var(--primary); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.cc-cap { fill: var(--primary); font-size: 12.5px; font-weight: 700; }
+.cc-nc { fill: var(--surface); stroke: var(--primary); stroke-width: 2; }
+.cc-av { fill: var(--primary-soft); stroke: var(--primary); }
+.cc-avt { fill: var(--primary); font-size: 16px; font-weight: 700; }
+.cc-nm { fill: var(--ink); font-size: 17px; font-weight: 700; }
+.cc-line { fill: var(--chip); }
+.cc-hi { fill: var(--err-soft); stroke: var(--err); }
+.cc-hit { fill: var(--err); font-size: 13px; font-weight: 700; }
+.cc-lb { fill: var(--muted); font-size: 13px; }
+.cc-big { fill: var(--ink); font-size: 17px; font-weight: 700; }
+.cc-tip { fill: var(--primary-soft); }
+.cc-tipt { fill: var(--primary); font-size: 13px; font-weight: 600; }
+.cc-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; width: 100%; max-width: 520px; text-align: left; }
+.cc-steps li { display: grid; grid-template-columns: 20px 76px 1fr; align-items: center; gap: 8px; padding: 6px 12px; border-radius: min(var(--radius), 10px); background: var(--chip); }
+.cc-steps svg { color: var(--primary); }
+.cc-steps span { color: var(--muted); font-size: 13px; }
+.cc-title { margin: 4px 0 0; font-size: 20px; }
+.cc-act { margin: 0; display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; }
+
+/* 客户名片 */
+.cc-card { display: grid; gap: 10px; padding: 14px; font-size: 14px; min-width: 0; }
+.cc-head { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto auto; align-items: center; gap: 10px; }
+.cc-avatar { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--primary-soft); color: var(--primary); font-size: 20px; font-weight: 700; }
+.cc-who { display: grid; min-width: 0; }
+.cc-name { font-size: 1.28em; line-height: 1.25; overflow-wrap: anywhere; }
+.cc-src { color: var(--muted); font-size: .86em; }
+.cc-intent { display: grid; justify-items: center; line-height: 1.1; padding: 4px 12px; border-radius: 10px; border: 1.5px solid var(--line-strong); color: var(--muted); font-size: 1.4em; font-weight: 800; }
+.cc-intent small { font-size: .5em; font-weight: 600; }
+.cc-intent.hi { background: var(--err-soft); border-color: var(--err); color: var(--err); }
+.cc-intent.mid { background: var(--warn-soft); border-color: var(--warn); color: var(--warn); }
+.cc-intent.lo { background: var(--chip); }
+.cc-intent.un { border-style: dashed; font-size: 1.1em; }
+.cc-shot { width: 38px; height: 52px; object-fit: cover; object-position: top; border-radius: 6px; border: 1px solid var(--line); background: var(--chip); }
+.cc-budget { display: flex; align-items: baseline; gap: 8px; padding: 8px 12px; border-radius: min(var(--radius), 10px); background: var(--chip); }
+.cc-budget small, .cc-next small { color: var(--muted); font-size: .86em; }
+.cc-budget b { font-size: 1.3em; color: var(--ink); }
+.cc-budget b.none { font-size: 1em; font-weight: 500; color: var(--muted); }
+.cc-fields { margin: 0; display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 4px 10px; line-height: 1.6; }
+.cc-fields dt { color: var(--muted); }
+.cc-fields dd { margin: 0; overflow-wrap: anywhere; user-select: text; }
+.cc-contacts { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.cc-contacts li { display: inline-flex; align-items: center; gap: 5px; min-height: 28px; padding: 0 10px; border-radius: 999px; border: 1px solid var(--line-strong); }
+.cc-contacts span { color: var(--muted); font-size: .88em; }
+.cc-contacts b { font-weight: 600; user-select: text; font-variant-numeric: tabular-nums; }
+.cc-next { margin: 0; display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 8px; padding: 10px 12px; border-radius: min(var(--radius), 10px); background: var(--primary-soft); color: var(--ink); line-height: 1.55; }
+.cc-next svg { color: var(--primary); margin-top: 2px; }
+.cc-next small { display: block; color: var(--primary); font-weight: 700; }
+.cc-quotes { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 10px 12px; border-radius: min(var(--radius), 10px); background: #EDEDED; --bub: #95EC69; --bub-ink: #111; }
+html[data-mode="dark"] .cc-quotes { background: #1E1E1E; --bub: #2F7A3E; --bub-ink: #fff; }
+.cc-qt { flex: 0 0 100%; display: inline-flex; align-items: center; gap: 4px; font-size: .85em; color: #5B5B5B; }
+html[data-mode="dark"] .cc-qt { color: #A8A8A8; }
+.cc-quotes q { quotes: none; padding: 6px 10px; border-radius: 8px; background: var(--bub); color: var(--bub-ink); line-height: 1.5; max-width: 100%; overflow-wrap: anywhere; user-select: text; }
+.cc-note { margin: 0; display: flex; gap: 6px; align-items: flex-start; padding: 6px 10px; border-radius: min(var(--radius), 10px); background: var(--warn-soft); color: var(--warn); font-size: .92em; }
+.cc-note svg { flex: none; margin-top: 3px; }
+@media (max-width: 520px) { .L-f .k-cards { grid-template-columns: 1fr; } .cc-shot { display: none; } .cc-head { grid-template-columns: 44px minmax(0, 1fr) auto; } }

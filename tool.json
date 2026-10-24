@@ -2,12 +2,13 @@
   "id": "w13",
   "slug": "chat-screenshot-to-crm",
   "name": "聊天截图转客户档案",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "repo": "campfire-code/chat-screenshot-to-crm",
   "license": "MIT",
   "ui": {
-    "layout": "e",
-    "palette": "blue"
+    "layout": "f",
+    "palette": "blue",
+    "accent": "#15C16D"
   },
   "upstream": null
 }

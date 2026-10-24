@@ -36,13 +36,16 @@ const files: [string, Row['status'], string][] = [
 
 export const params = { consent: true };
 
+// check-zh: 忽略（示例微信号本来就是英文数字）
 const DETAIL: Record<number, string> = {
-  0: '客户：陈女士\n意向：高\n预算：3000 元左右一台\n需求：办公室约 120 平，采购 6 台空气净化器，含上门安装\n关注点：下周三前送到\n手机号：13800138000\n微信号：demo_chen01\n跟进建议：今天发报价单，确认送货地址和开票信息\n原文依据：预算3000元左右一台｜下周三之前能送到吗？',
+  0: '客户：陈女士\n意向：高\n预算：3000 元左右一台\n需求：办公室约 120 平，采购 6 台空气净化器，含上门安装\n关注点：下周三前送到\n手机号：13800138000\n微信号：chen_jh0318\n跟进建议：今天发报价单，确认送货地址和开票信息\n原文依据：预算3000元左右一台｜下周三之前能送到吗？',
+  2: '客户：周经理\n意向：高\n预算：2 万以内\n需求：会议室投影和幕布，两间会议室\n关注点：能不能周末安装\n手机号：13900139000\n跟进建议：本周内上门量尺寸，同步发两套方案\n原文依据：预算2万以内｜周末能装吗？',
   1: '客户：林先生\n意向：中\n需求：彩色复印机\n关注点：价格偏高、耗材费用\n跟进建议：发耗材单价对比表，月底前再联系\n原文依据：价格有点高，耗材贵不贵？｜月底前再说吧',
 };
 
+// check-zh: 忽略（示例里的系统文件夹路径）
 export const notice = new URLSearchParams(location.search).get('state') === 'done'
-  ? { kind: 'ok' as const, text: '已整理 6 份客户档案（高意向 2 位），按意向从高到低排列：/Users/demo/Downloads/聊天截图转客户档案/客户档案.xlsx' }
+  ? { kind: 'ok' as const, text: '已整理 6 份客户档案（高意向 2 位），按意向从高到低排列：/Users/wangdian/Downloads/聊天截图转客户档案/客户档案.xlsx' }
   : undefined;
 
 export const rows = (state: string): Row[] =>

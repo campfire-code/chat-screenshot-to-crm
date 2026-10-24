@@ -6,6 +6,8 @@ import {
   type Profile,
 } from './core';
 import { writeXlsx } from './xlsx';
+import { Empty } from './Empty';
+import { ResultBody } from './Result';
 
 type Data = { file: string; profile: Profile; notes: string[]; chatText: string };
 
@@ -34,6 +36,8 @@ const tool: BatchTool = {
   resultView: 'list',
   needsLLM: true,
   concurrency: 1,
+  Empty,
+  ResultBody,
   accept: { label: '聊天截图', extensions: ['png', 'jpg', 'jpeg', 'webp', 'bmp'] },
   params: [
     {
